@@ -1,0 +1,23 @@
+{
+  "name": "atelier_final",
+  "version": "1.0.0",
+  "description": "un site web de type reseau social",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Camille",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/cli": "^13.0.3",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.14",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
