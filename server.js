@@ -19,10 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Relier le front Angular
 app.use(express.static(__dirname + '/public/dist/my-app'))
 
-// app.use('/', function (req,res) {
-//     res.sendFile(path.join(__dirname + '/public/dist/my-app/index.html'));
-//     console.log(__dirname);
-// })
+app.get('/', function (req,res) {
+    res.sendFile(path.join(__dirname + '/public/dist/my-app/index.html'));
+    console.log(__dirname);
+})
 
 //Page accueuil
 app.use('/accueuil', postsRoutes);
