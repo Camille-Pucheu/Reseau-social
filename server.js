@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const path = require('path');
 const express = require('express');
 const app = express();
 require('./config/db');
@@ -17,6 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Relier le front Angular
 app.use(express.static(__dirname + '/public/dist/my-app'))
+
+app.use('/', function (req,res) {
+    res.sendFile(path.join(__dirname + '/public/dist/my-app/index.html'));
+})
 
 //Page accueuil
 app.use('/accueuil', postsRoutes);
