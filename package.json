@@ -2,7 +2,7 @@
   "name": "atelier_final",
   "version": "1.0.0",
   "description": "un site web de type reseau social",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
