@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(__dirname + '/public/dist/my-app'))
 
 app.use('/test', function (req,res) {
-    res.sendFile(path.join(__dirname + '/public/dist/my-app/index.html'));
+    res.sendFile(path.join(__dirname, '/public/dist/my-app/index.html'));
     console.log(__dirname);
 })
 
