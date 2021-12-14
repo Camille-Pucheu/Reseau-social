@@ -17,10 +17,10 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Relier le front Angular
-app.use(express.static(__dirname + '/public/dist/my-app'))
+app.use(express.static(__dirname + './public/dist/my-app'))
 
 app.use('/test', function (req,res) {
-    res.send(path.join(__dirname, '/public/dist/my-app/index.html'));
+    res.sendFile(path.join(__dirname, './public/dist/my-app/index.html'));
     console.log(__dirname);
 })
 
