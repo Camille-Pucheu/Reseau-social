@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-post-build": "ng public/build --prod"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Camille",
   "license": "ISC",
