@@ -15,6 +15,9 @@ const PORT = process.env.PORT || 5500;
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+//Relier le front Angular
+app.use(express.static(__dirname + '/public/dist/my-app'))
+
 //Page accueuil
 app.use('/accueuil', postsRoutes);
 
