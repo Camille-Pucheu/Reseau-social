@@ -19,9 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Relier le front Angular
 app.use(express.static(path.join(__dirname + '/public/dist/my-app')))
 
-app.use('/chicon', function (req,res) {
+app.get('/', function (req,res) {
     res.sendFile(path.join(__dirname + '/public/dist/my-app/index.html'));
-    console.log(path.join(__dirname + '/public/dist/my-app/index.html'));
 })
 
 //Page accueuil
