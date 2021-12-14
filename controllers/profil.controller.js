@@ -5,7 +5,7 @@ const ObjectID = require("mongoose").Types.ObjectId;
 
 // Obtenir tous les utilisateurs
 module.exports.getAllUsers = async (req, res) => {
-    const users = await ProfilsModel.find().select("-password").pretty();
+    const users = await ProfilsModel.find().select("-password");
     res.status(200).json(users);
   };
 
