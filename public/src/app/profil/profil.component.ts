@@ -7,7 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
+  profil = {
+    pseudo : 'Pseudo',
+    prenom : 'Prenom',
+    nom : 'Nom',
+    genre : 'Genre',
+    dateDeNaissance : 'Date de naissance',
+    rue : 'Rue',
+    codePostal : 'CodePostal',
+    ville : 'Ville',
+    presentation : 'Texte de présentation',
+    preferences : 'Texte de préférences',
+    amis : 'Amis',
+    dateCreationProfil : 'date',
+  }
+
   constructor() { }
+
+  onDeconnection() {
+    alert('Vous êtes maintenant déconnecté');
+  }
 
   ngOnInit(): void {
   }

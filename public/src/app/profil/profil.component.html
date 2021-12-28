@@ -1,1 +1,29 @@
-<p>profil works!</p>
+<div class="content" role="main"> 
+    <div class="container">
+        <div class="identite">
+            <div>
+                <h1>{{ profil.pseudo }}</h1>
+                <h2>{{ profil.prenom }} {{ profil.nom }}</h2>
+                <p>{{ profil.genre }}</p>
+                <p>{{ profil.dateDeNaissance }}</p>
+                <p>Adresse:</p>
+                <address>
+                    {{ profil.rue }}<br>
+                    {{ profil.codePostal }} {{ profil.ville }}<br>
+                </address>
+            </div>
+            <img width="50" alt="Profil" src="../assets/img/icons/profil.png">
+        </div>
+        <div class="presentation">
+            <h3>Présentation</h3>
+            <p>{{ profil.presentation }}</p>
+            <h3>Préférences</h3>
+            <p>{{ profil.preferences }}</p>
+            <h3>Amis</h3>
+            <p>{{ profil.amis }}</p>
+            <p>Date de creation de profil : {{ profil.dateCreationProfil }}</p>
+        </div>
+        <!-- <button [disabled]="!authentification">Se déconnecter</button> -->
+        <button (click)="onDeconnection()">Se déconnecter</button>
+    </div>
+</div>

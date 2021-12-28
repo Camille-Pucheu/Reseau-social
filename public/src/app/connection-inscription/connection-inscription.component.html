@@ -1,0 +1,33 @@
+<div class="content" role="main">
+    <div class="container">
+        <div class="button">
+            <button 
+                (click)="onConnection()" 
+                [disabled]="!connectionActif">Connection</button>
+            <span>ou</span>
+            <button 
+                (click)="onInscription()" 
+                [disabled]="!inscriptionActif">Inscription</button>
+        </div>
+        <div class="connectionForm" *ngIf="connectionActif === true">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo">
+            <label for="password">Mot de Passe</label>
+            <input type="text" name="password">
+            <input type="button" value="Connection" 
+                (click)="seConnecter()">
+        </div>
+        <div class="inscriptionForm" *ngIf="inscriptionActif === true">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom">
+            <label for="prenom">Prenom</label>
+            <input type="text" name="prenom">
+            <label for="password">Mot de Passe</label>
+            <input type="text" name="password">
+            <input type="button" value="Inscription">
+        </div>
+        <!-- <button [disabled]="!authentification">Se déconnecter</button> -->
+    </div>
+</div>
