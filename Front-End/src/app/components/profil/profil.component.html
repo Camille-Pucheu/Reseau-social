@@ -1,0 +1,48 @@
+<div class="profilContainer" role="main"> 
+
+    <div class="profilCard">
+
+        <div class="identite">
+            <div>
+                <h1>{{ profil.pseudo }}</h1>
+                <h2>{{ profil.prenom }} {{ profil.nom }}</h2>
+                <p>{{ profil.email }}</p>
+                <p>{{ profil.genre }}</p>
+                <p id='birthDate'><span *ngIf="profil.birthDate">Date de naissance: </span>{{ profil.birthDate | date:'dd/MM/yyyy'}}</p>
+                <div *ngIf="profil.rue || profil.codePostal || profil.ville">
+                    <h4>Adresse:</h4>
+                    <address>
+                        <span *ngIf="profil.rue">Voie: </span>{{ profil.rue }}<br>
+                        <span *ngIf="profil.codePostal">Code Postal: </span>{{ profil.codePostal }}  <span *ngIf="profil.ville">Ville: </span>{{ profil.ville }}<br>
+                    </address>
+                </div>
+            </div>
+            <img width="50" alt="Profil" src="../assets/img/icons/profil.png">
+        </div>
+
+        <div class="presentation">
+            <h3>Présentation</h3>
+            <p *ngIf="!profil.presentation">Non renseigné</p>
+            <p>{{ profil.presentation }}</p>
+            <h3>Préférences</h3>
+            <p *ngIf="!profil.preferences">Non renseigné</p>
+            <p>{{ profil.preferences }}</p>
+            <h3 *ngIf="!profil.amis">Amis</h3>
+            <p>{{ profil.amis }}</p>
+            <p><span>Date de creation de profil : </span>{{ profil.createdAt | date:'dd/MM/yyyy hh:mm a' }}</p>
+        </div>
+
+        <button 
+            *ngIf="autoprofil"
+            (click)="seDeconnecter()">Se déconnecter</button>
+
+    </div>
+
+    <div class="spacer"></div>
+
+    <h2 class="posts" *ngIf="autoprofil">Les publications sur votre profil</h2>
+    <h2 class="posts" *ngIf="!autoprofil">Les publications sur ce profil</h2>
+
+    <app-posts [activePage]="page" [profilPosts]="dataPosts"></app-posts>
+
+</div>

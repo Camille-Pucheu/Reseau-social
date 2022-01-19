@@ -1,0 +1,175 @@
+.authContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 160px);
+    padding-top: 50px;
+    position: absolute;
+    right: 0px;
+    top: 110px;
+    width: calc(100% - 190px);
+}
+
+.container {
+    border-radius: 30px;
+    box-shadow: 4px 4px 7px rgba(61, 186, 249, 0.249);
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+button,
+button.actif:hover,
+input[type="submit"] {
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    font-weight: bold;
+    padding: 10px;
+    width: 180px;
+}
+
+button {
+    background-color: rgb(155, 155, 155);
+    border: solid 2px rgb(151, 151, 151);
+    color: rgb(75, 74, 74);
+}
+
+button:hover,
+input[type="submit"]:hover {
+    border: outset 2px rgba(61, 186, 249, 0.25);
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.781);
+    color: white;
+    cursor: pointer;
+}
+
+button.actif,
+button.actif:hover,
+input[type="submit"],
+input[disabled]:hover {
+    background-color: rgb(61, 186, 249) ;
+    border: solid 2px rgb(61, 186, 249);
+    color: black;
+}
+
+button:hover {
+    background-color: rgb(102, 173, 209) ;
+    color: rgb(36, 36, 36);
+}
+
+button.actif:hover,
+input[disabled]:hover {
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    cursor: inherit;
+}
+
+.connectionForm,
+.inscriptionForm {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 0 0 5px 55px;
+}
+
+input,
+fieldset,
+textarea {
+    border-radius: 10px;
+    border: solid 2px rgb(61, 186, 249);
+    box-shadow: 4px 4px 7px rgba(61, 186, 249, 0.249);
+    margin : 0 50px 10px;
+    padding: 5px;
+}
+
+input[type="submit"]  {
+    margin: 15px 0 25px;
+}
+
+ul {
+    margin-top: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+#genre li label {
+    margin: 0px;
+}
+#genre li input {
+    margin: 5px 3px 0px;
+}
+
+
+#adresse label {
+    margin: 0 0 7px 5px;
+}
+
+#adresse input {
+    margin: 0 0 5px;
+    width: 200px;
+}
+
+#codePostal {
+    width: 100px;
+}
+
+.spacer {
+    min-height: 50px;
+    width: 50px;
+}
+
+p {
+    text-align: center;
+    color: red;
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 950px) {
+    .authContainer {
+        height: calc(100% - 140px);
+        padding-top: 25px;
+        top: 90px;
+        width: calc(100% - 96px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .authContainer {
+        height: calc(100% - 210px);
+        top: 90px;
+        width: 100%;
+    }
+    .container {
+        margin: 0 50px 50px;
+        min-width: 280px;
+        width: auto;
+    }
+    .button {
+        flex-direction: column;
+    }
+    .button span {
+        margin: 7px 0 10px;
+    }
+    input,
+    fieldset,
+    textarea {
+        margin : 0 25px 10px;
+    }
+    label {
+        margin-left: 35px;
+    }
+    #adresse ul {
+        padding-left: 10px;
+    }
+}

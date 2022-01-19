@@ -1,0 +1,40 @@
+header {
+    align-items: center;
+    background-color: rgb(255, 119, 0);
+    background: linear-gradient(170deg, rgb(255, 199, 0), rgb(255, 170, 0), rgb(255, 170, 0), rgb(61, 185, 249), rgb(0, 121, 218));
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.12);
+    color: white;
+    display: flex;
+    font-weight: 700;
+    height: 100%;
+}
+
+header img {
+    margin: 0 16px;
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* header div:last-child {
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin: 0 20px;
+    width: 40px;
+} */
+
+
+/* Responsive Styles */
+@media screen and (max-width: 950px) {
+    header {
+        font-size: 12px;
+    }
+    header img {
+        width: 80px;
+    }
+}

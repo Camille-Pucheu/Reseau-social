@@ -1,0 +1,164 @@
+.profilContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 160px);
+    padding-top: 50px;
+    position: absolute;
+    right: 0px;
+    top: 110px;
+    width: calc(100% - 190px);
+}
+
+app-posts {
+    width: 100%;
+}
+
+.profilCard {
+    border-radius: 30px;
+    box-shadow: -4px -4px 10px rgba(255, 170, 0, 0.75), 4px 4px 10px rgb(61, 185, 249);
+    color: rgb(11, 109, 184);
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.identite {
+    display: flex;
+    justify-content: space-between;
+}
+
+.identite,
+h1 {
+    padding-bottom: 20px;
+}
+
+.identite>div,
+.presentation {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1 {
+    border-bottom: solid  2px rgba(61, 186, 249, 0.349);
+}
+
+.identite div p:nth-child(5) {
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+#birthDate {
+    text-decoration: none;
+}
+
+span,
+h4,
+h3 {
+    color: rgb(11, 78, 129);
+}
+
+span {
+    font-weight: 650;
+}
+
+h4 {
+    margin-bottom: 2px;
+}
+
+address {
+    margin-left: 30px;
+}
+
+img {
+    border-radius: 50%;
+    border: 3px solid rgb(255, 170, 0);
+    box-shadow: 2px 2px 7px rgba(61, 186, 249, 0.349);
+    height: 100px;
+    margin: 20px;
+    padding: 5px;
+    width: 100px;
+}
+
+.presentation {
+    border-top: dotted  3px rgba(61, 186, 249, 0.349);
+    padding-bottom: 10px;
+}
+
+.presentation h3 {
+    margin-bottom: 2px;
+}
+
+.presentation p {
+    margin-left: 13px; 
+    margin-top: 0px;
+}
+
+button {
+    align-self: center;
+    background-color: rgb(61, 186, 249) ;
+    border-radius: 10px;
+    border: solid 2px rgb(61, 186, 249);
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    font-weight: bold;
+    margin-bottom: 38px;
+    padding: 10px;
+    width: 180px;
+}
+
+button:hover {
+    border: outset 2px rgba(61, 186, 249, 0.25);
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.781);
+    color: white;
+    cursor: pointer;
+}
+
+.spacer {
+    min-height: 50px;
+    width: 50px;
+}
+
+.posts {
+    margin-bottom: 39px;
+    margin-top: 0;
+    border-top: solid 2px rgb(255, 170, 0);
+    width: 35%;
+    text-align: center;
+    padding-top: 18px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 950px) {
+    .profilContainer {
+        height: calc(100% - 140px);
+        padding-top: 25px;
+        top: 90px;
+        width: calc(100% - 96px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profilContainer {
+        height: calc(100% - 210px);
+        top: 90px;
+        width: 100%;
+    }
+    .profilCard {
+        margin-bottom: 50px;
+        min-width: 300px;
+        width: auto;
+    }
+    .identite {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    h1 {
+        font-size: 21px;
+    }
+    h2 {
+        font-size: 17px;
+    }
+    img {
+        align-self: center;
+    }
+}

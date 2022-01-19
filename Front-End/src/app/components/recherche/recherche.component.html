@@ -1,0 +1,17 @@
+<div class="rechercheContainer" role="main">
+    <!-- <input type="search" id="search" name="search"> -->
+    
+    <ul>
+        <li *ngFor="let user of users">
+            <img width="50" alt="Profil" src="../assets/img/icons/profil.png">
+            <div class="identite">
+                <h2>{{ user.pseudo }}</h2>
+                <h4>{{ user.prenom }} {{ user.nom }}</h4>
+            </div>
+            <button routerLink="/recherche/{{ user.id }}" routerLinkActive="active">Consulter le profil</button>
+        </li>
+    </ul>
+    <div class="fin">
+        <p>Fin</p>
+    </div>
+</div>

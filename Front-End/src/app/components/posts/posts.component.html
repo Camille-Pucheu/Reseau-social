@@ -1,0 +1,24 @@
+<div id=postsContainer>
+    <form class="postContainer"
+        *ngIf="authentificationStatus"
+        (ngSubmit)="nouveauPost(postForm)"
+        #postForm="ngForm">
+        <h1 id="postTitle">Publier un message</h1>
+        <textarea name="post" id="post" cols="20" rows="3" ngModel required [(ngModel)]="newPost"></textarea>
+        <input type="submit" value="Poster"
+            [disabled]="postForm.invalid">
+    </form>
+    <div class="postContainer"
+        *ngFor="let post of posts">
+        <div class="identite">
+            <img width="50" alt="Profil" src="../assets/img/icons/profil.png">
+            <h1>{{ post.auteur }}</h1>
+            <span>{{ post.date | date:'dd/MM/yyyy, h:mm a' }}</span>
+        </div>
+        <p>{{ post.message }}</p>
+        <!-- <button>Commenter</button> -->
+    </div>
+    <div class="fin">
+        <p>Fin</p>
+    </div>
+</div>
