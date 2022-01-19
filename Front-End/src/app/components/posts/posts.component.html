@@ -6,7 +6,8 @@
         <h1 id="postTitle">Publier un message</h1>
         <textarea name="post" id="post" cols="20" rows="3" ngModel required [(ngModel)]="newPost"></textarea>
         <input type="submit" value="Poster"
-            [disabled]="postForm.invalid">
+            [disabled]="postForm.invalid"
+            (click)="newPostEvent()">
     </form>
     <div class="postContainer"
         *ngFor="let post of posts">

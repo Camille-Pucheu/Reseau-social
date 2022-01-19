@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 /********* Service,s *********/
@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit, OnChanges {
     userId: '',
     message: ''
   };
+  @Output() public newPostEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private authService: AuthentificationService,
               private postService: PostService,
@@ -86,6 +87,10 @@ export class PostsComponent implements OnInit, OnChanges {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  public newPostEvent() {
+    this.newPostEmitter.emit(true);
   }
 
 }

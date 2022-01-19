@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 /********* Service,s *********/
 import { ProfilService } from '../../services/profil.service';
@@ -12,10 +12,11 @@ import { PostModel } from 'src/app/models/post.model';
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
-export class ProfilComponent implements OnInit {
+export class ProfilComponent implements OnInit, OnChanges {
 
   page: string = 'profil';
   dataPosts: any;
+  newPostAdd: boolean = false;
   userId: any;
   userPseudo: any;
   autoprofil: boolean = false;
@@ -42,6 +43,14 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.profilAAfficher();
+  }
+
+  ngOnChanges(): void {
+    this.profilAAfficher();
+  }
+
+  profilAAfficher () {
     if (this.route.snapshot.routeConfig?.path == 'profil') {
       this.userId = this.authentificationService.idUtilisateurConnecte;
       this.afficherSonProfil(this.userId);
@@ -57,11 +66,17 @@ export class ProfilComponent implements OnInit {
     }
   }
 
+  newPost(retour: boolean) {
+    this.newPostAdd = retour;
+    this.profilAAfficher();
+  }
+
 /********************************************* 
 **************** Profil connecté *************
 **********************************************/
 
   afficherSonProfil (userId: any) {
+    this.page = 'profil';
     const id = userId;
     this.profilService
       .consulterSonProfil(id)
@@ -85,6 +100,7 @@ export class ProfilComponent implements OnInit {
 **********************************************/
 
   afficherUnProfil (userId: any) {
+    this.page = 'recherche';
     const id = userId;
     this.profilService
       .consulterUnProfil(id)

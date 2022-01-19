@@ -43,6 +43,6 @@
     <h2 class="posts" *ngIf="autoprofil">Les publications sur votre profil</h2>
     <h2 class="posts" *ngIf="!autoprofil">Les publications sur ce profil</h2>
 
-    <app-posts [activePage]="page" [profilPosts]="dataPosts"></app-posts>
+    <app-posts [activePage]="page" [profilPosts]="dataPosts" (newPostEmitter)="newPost($event)"></app-posts>
 
 </div>
