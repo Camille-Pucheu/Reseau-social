@@ -16,7 +16,7 @@ var corsOptions = {
     origin: "http://localhost:8081"
   };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 //Verifier si message d'erreur node
 // const mongoose = require('mongoose');
@@ -27,11 +27,11 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Relier le front Angular
-// app.use(express.static(path.join(__dirname + '/Front-End/dist/my-app')))
+app.use(express.static(path.join(__dirname + './Front-End/dist/my-app')))
 
 app.get('/', function (req,res) {
-    res.json({ message: "Test" });
-    // res.sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+    // res.json({ message: "Test" });
+    res.sendFile(path.join(__dirname + './Front-End/dist/my-app/index.html'));
 })
 
 //Page accueuil

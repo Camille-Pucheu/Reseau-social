@@ -3,8 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { User } from "../models/profil.model";
 
-const baseUrlProfil = 'http://localhost:5500/profil';
-const baseUrlRecherche = 'http://localhost:5500/recherche';
+// const baseUrlProfil = 'http://localhost:5500/profil';
+// const baseUrlRecherche = 'http://localhost:5500/recherche';
+const baseUrlProfil = 'https://projet-final-devjs.herokuapp.com/profil';
+const baseUrlRecherche = 'https://projet-final-devjs.herokuapp.com/recherche';
 
 @Injectable()
 // Pour injecter un service dans un autre service @Injectable()
