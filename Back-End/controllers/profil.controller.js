@@ -4,11 +4,49 @@ const { PostsModel } = require("../models/postsModel");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 
-// Obtenir tous les utilisateurs
+// Obtenir des utilisateurs
 module.exports.getAllUsers = async (req, res) => {
-    const users = await ProfilsModel.find().select("-password");
-    res.status(200).send(users);
-  };
+
+    // Recherche par pseudo
+    if (req.query.pseudo) {
+        const pseudoSearch = req.query.pseudo;
+        ProfilsModel.find({ pseudo: { $regex: new RegExp(pseudoSearch), $options: "i" } }, function (err, docs) {
+            if (!docs){
+                res.send('err');
+            }
+            else {
+                res.status(200).send(docs);
+            }
+        })
+    // Recherche par prenom
+    } else if (req.query.prenom) {
+        const prenomSearch = req.query.prenom;
+        ProfilsModel.find({prenom: { $regex: new RegExp(prenomSearch), $options: "i" } }, function (err, docs) {
+            if (!docs){
+                res.send('err');
+            }
+            else {
+                res.status(200).send(docs);
+            }
+        })
+    // Recherche par nom
+    } else if (req.query.nom) {
+        const nomSearch = req.query.nom;
+        ProfilsModel.find({nom: { $regex: new RegExp(nomSearch), $options: "i" } }, function (err, docs) {
+            if (!docs){
+                res.send('err');
+            }
+            else {
+                res.status(200).send(docs);
+            }
+        })
+    // Tous les utilisateurs
+    } else {
+        const users = await ProfilsModel.find().select("-password");
+        res.status(200).send(users);
+    }
+    
+};
 
 
 // Obtenir les infos d'un seul utilisateur
@@ -115,9 +153,33 @@ module.exports.deleteUser = async (req, res) => {
         return res.status(400).send(`Utilisateur ${req.params.id} non reconnu`);
     }
     try {
-        await ProfilsModel.deleteOne({ _id: req.params.id }).exec();
+        await ProfilsModel.findByIdAndDelete(req.params.id).exec();
         res.status(200).send({ message: "Profil supprimé" });
     } catch (err) {
         return res.status(500).send({ message: err });
     }
 };
+
+
+// Rechercher un utilisateur
+// Par pseudo, prenom ou nom
+module.exports.searchUser = (req, res) => {
+    console.log('req.params = ', req.params);
+    console.log('req.body = ', req.body);
+    console.log('req.params.findBy = ', req.params.findBy);
+    // console.log(req.body);
+    // console.log(req.query);
+    const userSearch = req.body.search;
+    const userFindBy = req.body.findBy;
+    // console.log('userSearch, userFindBy = ',userSearch, userFindBy);
+
+    ProfilsModel.find({userFindBy: userSearch}, function (err, docs) {
+        if (!docs){
+            res.send('erreur');
+        }
+        else {
+            res.status(200).send(docs);
+        }
+    })
+    
+}

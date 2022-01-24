@@ -5,7 +5,8 @@ const profilController = require('../controllers/profil.controller');
 const postsController = require('../controllers/posts.controller');
 
 
-// Obtenir tous les utilisateurs
+// Liste d'utilisateurs
+// Tous ou par recherche de pseudo, prenom ou nom
 router.get('/', profilController.getAllUsers);
 
 // Consulter le profil d'un utilisateur

@@ -66,11 +66,11 @@ const profilSchema = new mongoose.Schema(
     },
     presentation :{
       type: String,
-      max: 1024,
+      maxLength: 1024,
     },
     preferences :{
       type: String,
-      max: 1024,
+      maxLength: 1024,
     },
     amis: {
       type: [String]

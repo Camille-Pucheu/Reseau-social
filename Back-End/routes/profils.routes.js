@@ -9,10 +9,10 @@ const profilController = require('../controllers/profil.controller');
 **********************************************/
 
 // Authentification
-router.post('/connection', profilController.signIn);
+router.post('/identification/connection', profilController.signIn);
 
 // Création d'un utilisateur
-router.post('/connection/inscription', profilController.createUser);
+router.post('/identification/inscription', profilController.createUser);
 
 /********************************************* 
 *********** Consultation de profil ***********

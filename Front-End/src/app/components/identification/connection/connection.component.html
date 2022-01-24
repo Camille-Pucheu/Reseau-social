@@ -1,128 +1,17 @@
-<div class="authContainer">
+<div class="connectionContainer">
 
-    <div class="container">
-
-        <!-- Boutons -->
-        <div class="button">
-            <!-- <button 
-                (click)="onConnectionForm()" 
-                [class.actif]="boutonConnectionActif">Connection</button>
-                <span>ou</span>
-            <button 
-                (click)="onInscriptionForm()" 
-                [class.actif]="boutonInscriptionActif">Inscription</button> -->
-            <button 
-                (click)="onConnectionForm()"
-                [class.actif]="boutonConnectionActif" 
-                routerLink="/profil/connection" routerLinkActive="active">Connection</button>
-                <span>ou</span>
-            <button 
-                (click)="onInscriptionForm()" 
-                [class.actif]="boutonInscriptionActif"
-                routerLink="/profil/inscription" routerLinkActive="active">Inscription</button>
-        </div>
-
-        <!-- Connection -->
-        <form class="connectionForm" 
-            *ngIf="boutonConnectionActif === true"
-            (ngSubmit)="onSubmit(connectionForm)"
-            #connectionForm="ngForm">
-
-            <label for="pseudo">Pseudonyme <abbr title="required">*</abbr></label>
-            <input type="text" name="pseudo" id="pseudo" ngModel required>
-
-            <label for="password">Mot de Passe <abbr title="required">*</abbr></label>
-            <input type="password" name="password" ngModel required>
-
-            <p *ngIf="erreurConnection == true">Pseudonyme ou mot de passe incorrect.</p>
-
-            <input type="submit" value="Connection"
-                [disabled]="connectionForm.invalid">
-                
-        </form>
-
-        <!-- Inscription -->
-        <form class="inscriptionForm" 
-        *ngIf="boutonInscriptionActif === true"
-        [formGroup]="userForm"
-        (ngSubmit)="onSubmitForm()">
+    <form (ngSubmit)="onSubmit(connectionForm)" #connectionForm="ngForm">
 
         <label for="pseudo">Pseudonyme <abbr title="required">*</abbr></label>
-        <input type="text" name="pseudo" id="pseudo" formControlName="pseudo" required>
-
-        <label for="mail">E-mail <abbr title="required">*</abbr></label>
-        <input type="email" name="email" id="mail" formControlName="email" required>
+        <input type="text" name="pseudo" id="pseudo" ngModel required>
 
         <label for="password">Mot de Passe <abbr title="required">*</abbr></label>
-        <input type="password" name="password" formControlName="password" required>
+        <input type="password" name="password" ngModel required>
 
-        <label for="prenom">Prenom <abbr title="required">*</abbr></label>
-        <input type="text" name="prenom" formControlName="prenom" required>
+        <p *ngIf="erreurConnection == true">Pseudonyme ou mot de passe incorrect.</p>
 
-        <label for="nom">Nom <abbr title="required">*</abbr></label>
-        <input type="text" name="nom" formControlName="nom" required>
-
-        <fieldset  id="genre">
-            <legend>Genre</legend>
-            <ul>
-                <li>
-                    <label for="homme">
-                        <input type="radio" name="genre" id="homme" value="homme" formControlName="genre">
-                        Homme
-                    </label>
-                </li>
-                <li>
-                    <label for="femme">
-                        <input type="radio" name="genre" id="femme" value="femme" formControlName="genre">
-                        Femme
-                    </label>
-                </li>
-                <li>
-                    <label for="autre">
-                        <input type="radio" name="genre" id="autre" value="autre" formControlName="genre">
-                        Autre
-                    </label>
-                </li>
-            </ul>
-        </fieldset>
-
-        <label for="dateNaissance">Date de Naissance</label>
-        <input type="date" name="birthDate" id="dateNaissance" formControlName="birthDate">
-
-        <fieldset id="adresse">
-            <legend>Adresse</legend>
-            <ul>
-                <li>
-                    <label for="rue">Rue</label>
-                </li>
-                <li>    
-                    <input type="text" name="rue" id="rue" formControlName="rue">
-                </li>
-                <li>
-                    <label for="codePostal">Code Postal</label>
-                </li>
-                <li>    
-                    <input type="text" name="codePostal" id="codePostal" formControlName="codePostal">
-                </li>
-                <li>
-                    <label for="ville">Ville</label>
-                </li>
-                <li>    
-                    <input type="text" name="ville" id="ville" formControlName="ville">
-                </li>
-            </ul>
-        </fieldset>
-
-        <label for="presentation">Présente-toi:</label>
-        <textarea name="presentation" id="presentation" cols="30" rows="10" formControlName="presentation"></textarea>
-
-        <label for="preferences">Quelles sont tes préférences ?</label>
-        <textarea name="preferences" id="preferences" cols="30" rows="10" formControlName="preferences"></textarea>
-
-        <input type="submit" value="Inscription" [disabled]="userForm.invalid">
+        <input type="submit" value="Connection" [disabled]="connectionForm.invalid">
+            
     </form>
-    </div>
-
-    <div class="spacer"></div>
 
 </div>

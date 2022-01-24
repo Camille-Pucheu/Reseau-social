@@ -7,12 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  // messages?: PostModel[];
-  // message: PostModel = {
-  //   auteur: '',
-  //   message: ''
-  // };
-
   constructor() { }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ObjectUnsubscribedError, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 /********* Service,s *********/
 import { ProfilService } from '../../services/profil.service';
 /********* Modèle,s *********/
@@ -10,7 +10,7 @@ import { User } from '../../models/profil.model';
   templateUrl: './recherche.component.html',
   styleUrls: ['./recherche.component.css']
 })
-export class RechercheComponent implements OnInit, OnDestroy {
+export class RechercheComponent implements OnInit {
 
   page = 'recherche';
   users: User[] = [];
@@ -20,18 +20,10 @@ export class RechercheComponent implements OnInit, OnDestroy {
     prenom: '',
     nom: '',
   };
-  
-  userSubscription: Subscription | any;
 
   constructor(private profilService: ProfilService) { }
 
   ngOnInit(): void {
-  //   this.userSubscription = this.profilService.userSubject.subscribe(
-  //     (users: User[]) => {
-  //       this.users = users;
-  //     }
-  //   );
-  //   this.profilService.emitUsers()
     this.afficherTousLesProfils();
   }
 
@@ -46,8 +38,34 @@ export class RechercheComponent implements OnInit, OnDestroy {
       })
   }
 
-  ngOnDestroy(): void {
-  //     this.userSubscription.unsubscribe();
+  onSubmit(form: NgForm): void  {
+    const search: string = form.value.search;
+    const findBy: string = form.value.findBy;
+    if(findBy == 'pseudo') {
+      this.profilService.rechercheParPseudo(search)
+      .subscribe({
+        next: (data) => {
+          this.users = data;
+        },
+        error: (e) => console.error(e)
+      })
+    } else if (findBy == 'prenom') {
+      this.profilService.rechercheParPrenom(search)
+      .subscribe({
+        next: (data) => {
+          this.users = data;
+        },
+        error: (e) => console.error(e)
+      })
+    } else if (findBy == 'nom') {
+      this.profilService.rechercheParNom(search)
+        .subscribe({
+          next: (data) => {
+            this.users = data;
+          },
+          error: (e) => console.error(e)
+        })
+    }
   }
 
 }

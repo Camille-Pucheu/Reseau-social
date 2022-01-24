@@ -1,5 +1,7 @@
 <div class="profilContainer" role="main"> 
 
+    <button *ngIf="autoprofil" (click)="seDeconnecter()">Se déconnecter</button>
+
     <div class="profilCard">
 
         <div class="identite">
@@ -7,7 +9,7 @@
                 <h1>{{ profil.pseudo }}</h1>
                 <h2>{{ profil.prenom }} {{ profil.nom }}</h2>
                 <p>{{ profil.email }}</p>
-                <p>{{ profil.genre }}</p>
+                <p><span *ngIf="profil.genre">Genre: </span>{{ profil.genre }}</p>
                 <p id='birthDate'><span *ngIf="profil.birthDate">Date de naissance: </span>{{ profil.birthDate | date:'dd/MM/yyyy'}}</p>
                 <div *ngIf="profil.rue || profil.codePostal || profil.ville">
                     <h4>Adresse:</h4>
@@ -32,17 +34,25 @@
             <p><span>Date de creation de profil : </span>{{ profil.createdAt | date:'dd/MM/yyyy hh:mm a' }}</p>
         </div>
 
-        <button 
-            *ngIf="autoprofil"
-            (click)="seDeconnecter()">Se déconnecter</button>
+        <div class="button" *ngIf="autoprofil || admin">
+            <!-- <button (click)="modifierLeProfil()">Modifier ce profil</button> -->
+            <button (click)="supprimerLeProfil()">Supprimer ce profil</button>
+        </div>
+
 
     </div>
 
-    <div class="spacer"></div>
+    <!-- <app-inscription [profilConnecte]=profil></app-inscription> -->
 
     <h2 class="posts" *ngIf="autoprofil">Les publications sur votre profil</h2>
     <h2 class="posts" *ngIf="!autoprofil">Les publications sur ce profil</h2>
 
     <app-posts [activePage]="page" [profilPosts]="dataPosts" (newPostEmitter)="newPost($event)"></app-posts>
+
+    <!-- <div id="userSuppr">
+        <div>
+            <p>Profil supprimé!</p>
+        </div>
+    </div> -->
 
 </div>

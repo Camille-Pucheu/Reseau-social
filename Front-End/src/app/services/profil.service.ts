@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Subject } from "rxjs";
 import { User } from "../models/profil.model";
-import { PostModel } from "../models/post.model";
 
 const baseUrlProfil = 'http://localhost:5500/profil';
 const baseUrlRecherche = 'http://localhost:5500/recherche';
@@ -12,34 +10,18 @@ const baseUrlRecherche = 'http://localhost:5500/recherche';
 // Pour injecter un service dans un autre service @Injectable()
 export class ProfilService {
 
-  // userSubject = new Subject<User[]>();
-
-  // private users: User[] = [
-  //   {
-  //     pseudo: 'Administrateur',
-  //     prenom: 'Camille',
-  //     nom: 'PUCHEU',
-  //     email: 'camille.pucheu@gmail.com',
-  //     motDePasse: 'Charlotte',
-  //     genre: 'Femme',
-  //     presentation: 'Developpeur du site',
-  //     preferences: 'HTML, CSS et Javascript',
-  //   }
-  // ];
-
   constructor(private http: HttpClient) {}
-
 
 /********************************************* 
 *************** Identification ***************
 **********************************************/
 
   authentification(data: any): Observable<any> {
-    return this.http.post(`${baseUrlProfil}/connection`, data);
+    return this.http.post(`${baseUrlProfil}/identification/connection`, data);
   }
 
   creationDeProfil(data: any): Observable<any> {
-    return this.http.post(`${baseUrlProfil}/connection/inscription`, data);
+    return this.http.post(`${baseUrlProfil}/identification/inscription`, data);
   }
 
 /********************************************* 
@@ -75,53 +57,16 @@ export class ProfilService {
     return this.http.get(`${baseUrlRecherche}/${id}`);
   }
 
-  // rechercheParPseudo(pseudo: any): Observable<User[]> {
-  //   return this.http.get<User[]>(`${baseUrlRecherche}?pseudo=${pseudo}`);
-  // }
+  rechercheParPseudo(pseudo: string): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrlRecherche}?pseudo=${pseudo}`);
+  }
 
+  rechercheParPrenom(prenom: string): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrlRecherche}?prenom=${prenom}`);
+  }
 
+  rechercheParNom(nom: string): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrlRecherche}?nom=${nom}`);
+  }
 
-
-
-
-
-
-
-  // emitUsers() {
-  //   this.userSubject.next(this.users.slice());
-  // }
-
-  // addUser (user: User) {
-  //   this.users.push(user);
-  //   this.emitUsers();
-  // }
-
-  // saveUsersToServer() {
-  //   return this.http
-  //     .post('../Back-end/server.js', this.users)
-  //     // .subscribe(
-  //     //   () => {
-  //     //     console.log('Enregitrement OK');
-  //     //   },
-  //     //   (error) => {
-  //     //     console.log('Erreur de sauvegarde' + error);
-  //     //   }
-  //     // )
-  //     .subscribe({complete: console.info});
-  // }
-
-    profil = {
-        pseudo : 'Pseudo',
-        prenom : 'Prenom',
-        nom : 'Nom',
-        genre : 'Genre',
-        dateDeNaissance : 'Date de naissance',
-        rue : 'Rue',
-        codePostal : 'CodePostal',
-        ville : 'Ville',
-        presentation : 'Texte de présentation',
-        preferences : 'Texte de préférences',
-        amis : 'Amis',
-        dateCreationProfil : 'date',
-      }
 }

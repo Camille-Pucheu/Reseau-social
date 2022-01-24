@@ -1,1 +1,110 @@
-<p>inscription works!</p>
+<div class="inscriptionContainer">
+
+    <form [formGroup]="userForm"(ngSubmit)="onSubmitForm()">
+
+        <label for="pseudo">
+            Pseudonyme <abbr title="required">*</abbr>
+            <span *ngIf="invalidInscription.pseudoExistant"> / Pseudonyme déjà utilisé</span>
+            <span *ngIf="invalidInscription.minPseudo"> / Minimum 3 caractères</span>
+            <span *ngIf="invalidInscription.maxPseudo"> / Maximum 55 caractères</span>
+        </label>
+        <input type="text" name="pseudo" id="pseudo" placeholder="{{ profil.pseudo }}" value="{{ profil.pseudo }}" formControlName="pseudo" required>
+
+        <label for="mail">
+            E-mail <abbr title="required">*</abbr>
+            <span *ngIf="invalidInscription.emailExistant"> / E-mail déjà utilisé</span>
+            <span *ngIf="invalidInscription.invalidEmail"> / E-mail invalide</span>
+        </label>
+        <input type="email" name="email" id="mail" placeholder="{{ profil.email }}" value="{{ profil.email }}" formControlName="email" required>
+
+        <label for="password">
+            Mot de Passe <abbr title="required">*</abbr>
+            <span *ngIf="invalidInscription.minPassword"> / Minimum 6 caractères</span>
+        </label>
+        <input type="password" name="password" formControlName="password" required>
+
+        <label for="prenom">
+            Prenom <abbr title="required">*</abbr>
+            <span *ngIf="invalidInscription.minPrenom"> / Minimum 6 caractères</span>
+            <span *ngIf="invalidInscription.maxPrenom"> / Maximum 55 caractères</span>
+        </label>
+        <input type="text" name="prenom" placeholder="{{ profil.prenom }}" value="{{ profil.prenom }}" formControlName="prenom" required>
+
+        <label for="nom">
+            Nom <abbr title="required">*</abbr>
+            <span *ngIf="invalidInscription.minNom"> / Minimum 6 caractères</span>
+            <span *ngIf="invalidInscription.maxNom"> / Maximum 55 caractères</span>
+        </label>
+        <input type="text" name="nom" placeholder="{{ profil.nom }}" value="{{ profil.nom }}" formControlName="nom" required>
+
+        <fieldset  id="genre">
+            <legend>Genre</legend>
+            <ul>
+                <li>
+                    <label for="homme">
+                        <input type="radio" name="genre" id="homme" value="Homme" formControlName="genre">
+                        Homme
+                    </label>
+                </li>
+                <li>
+                    <label for="femme">
+                        <input type="radio" name="genre" id="femme" value="Femme" formControlName="genre">
+                        Femme
+                    </label>
+                </li>
+                <li>
+                    <label for="autre">
+                        <input type="radio" name="genre" id="autre" value="Autre" formControlName="genre">
+                        Autre
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+
+        <label for="dateNaissance">Date de Naissance</label>
+        <input type="date" name="birthDate" id="dateNaissance" placeholder="{{ profil.rue }}" value="{{ profil.birthDate }}" formControlName="birthDate">
+
+        <fieldset id="adresse">
+            <legend>Adresse</legend>
+            <ul>
+                <li>
+                    <label for="rue">Rue</label>
+                </li>
+                <li>    
+                    <input type="text" name="rue" id="rue" placeholder="{{ profil.rue }}" value="{{ profil.rue }}" formControlName="rue">
+                </li>
+                <li>
+                    <label for="codePostal">Code Postal</label>
+                </li>
+                <li>    
+                    <input type="text" name="codePostal" id="codePostal" placeholder="{{ profil.codePostal }}" value="{{ profil.codePostal }}" formControlName="codePostal">
+                </li>
+                <li>
+                    <label for="ville">Ville</label>
+                </li>
+                <li>    
+                    <input type="text" name="ville" id="ville" placeholder="{{ profil.ville }}" value="{{ profil.ville }}" formControlName="ville">
+                </li>
+            </ul>
+        </fieldset>
+
+        <label for="presentation">
+            Présente-toi:
+            <span *ngIf="invalidInscription.maxPresentation"> / Maximum 1024 caractères</span>
+        </label>
+        <textarea name="presentation" id="presentation" cols="30" rows="10" value="{{ profil.presentation }}" formControlName="presentation">{{ profil.presentation }}</textarea>
+
+        <label for="preferences">
+            Quelles sont tes préférences ?
+            <span *ngIf="invalidInscription.maxPreferences"> / Maximum 1024 caractères</span>
+        </label>
+        <textarea name="preferences" id="preferences" cols="30" rows="10" value="{{ profil.preferences }}" formControlName="preferences">{{ profil.preferences }}</textarea>
+
+        <p *ngIf="invalidInscription.invalidForm">Oups... Une des données est invalide!</p>
+
+        <!-- <input type="submit" value="Inscription" [disabled]="userForm.invalid"> -->
+        <input type="submit" value="Enregistrer">
+
+    </form>
+
+</div>

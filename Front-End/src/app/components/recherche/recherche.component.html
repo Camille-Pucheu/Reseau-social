@@ -1,5 +1,17 @@
 <div class="rechercheContainer" role="main">
-    <!-- <input type="search" id="search" name="search"> -->
+
+    <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
+        <h2>Rechercher:</h2>
+        <div>
+            <input type="search" id="search" name="search" ngModel required>
+            <select name="findBy" id="findBy" ngModel required>
+                <option value="pseudo">Par pseudonyme</option>
+                <option value="prenom">Par prénom</option>
+                <option value="nom">Par nom</option>
+            </select>
+        </div>
+        <button type="submit" [disabled]="searchForm.invalid">Lancer la recherche</button>
+    </form>
     
     <ul>
         <li *ngFor="let user of users">

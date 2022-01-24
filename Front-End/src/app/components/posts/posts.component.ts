@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 /********* Service,s *********/
 import { AuthentificationService } from '../../services/authentification.service';
 import { PostService } from '../../services/post.service';
@@ -29,8 +28,7 @@ export class PostsComponent implements OnInit, OnChanges {
   @Output() public newPostEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private authService: AuthentificationService,
-              private postService: PostService,
-              private route: ActivatedRoute) { }
+              private postService: PostService) { }
 
   ngOnInit(): void {
     this.authentificationStatus = this.authService.authentification;
@@ -53,7 +51,6 @@ export class PostsComponent implements OnInit, OnChanges {
     this.postService.voirTousLesPosts()
       .subscribe({
         next: (data) => {
-          console.log('voirTousLesPosts data = ', data);
           this.posts = data;
         },
         error: (e) => console.error(e)
@@ -77,7 +74,6 @@ export class PostsComponent implements OnInit, OnChanges {
       userId: this.authService.idUtilisateurConnecte,
       message: text
     };
-    console.log('dans le nouveau post = ', data.auteur, ' => ', data.userId)
 
     this.postService.creerUnPost(data)
       .subscribe({

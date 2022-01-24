@@ -1,0 +1,115 @@
+.inscriptionContainer {
+    border-radius: 2px 30px;
+    box-shadow: 4px 4px 10px rgb(61, 186, 249);
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    width: 500px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 0 0 5px 55px;
+}
+
+span {
+    color: red;
+}
+
+input,
+fieldset,
+textarea {
+    border-radius: 10px;
+    border: solid 2px rgb(61, 186, 249);
+    box-shadow: 4px 4px 7px rgba(61, 186, 249, 0.249);
+    margin : 0 50px 10px;
+    padding: 5px;
+}
+
+ul {
+    margin-top: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+#genre li label {
+    margin: 0px;
+}
+#genre li input {
+    margin: 5px 3px 0px;
+}
+
+
+#adresse label {
+    margin: 0 0 7px 5px;
+}
+
+#adresse input {
+    margin: 0 0 5px;
+    width: 200px;
+}
+
+#codePostal {
+    width: 100px;
+}
+
+p {
+    color: red;
+    text-align: center;
+}
+
+input[type="submit"] {
+    align-self: center;
+    background-color: rgb(61, 186, 249) ;
+    border-radius: 2px 15px;
+    border: none;
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    width: 180px;
+    margin: 15px 0 25px;
+}
+
+input[disabled] {
+    background-color: rgb(102, 173, 209) ;
+    color: rgb(75, 74, 74);
+    cursor: initial;
+}
+
+input[type="submit"]:hover {
+    color: white;
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.781);
+}
+
+input[disabled]:hover {
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    color: rgb(75, 74, 74);
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 700px) {
+    .inscriptionContainer {
+        min-width: 280px;
+        width: auto;
+    }
+    input,
+    fieldset,
+    textarea {
+        margin : 0 25px 10px;
+    }
+    label {
+        margin-left: 35px;
+    }
+    #adresse ul {
+        padding-left: 10px;
+    }
+}

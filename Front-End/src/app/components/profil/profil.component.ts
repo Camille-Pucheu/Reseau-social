@@ -5,7 +5,6 @@ import { ProfilService } from '../../services/profil.service';
 import { AuthentificationService } from '../../services/authentification.service';
 /********* Modèle,s *********/
 import { User } from 'src/app/models/profil.model';
-import { PostModel } from 'src/app/models/post.model';
 
 @Component({
   selector: 'app-profil',
@@ -20,6 +19,7 @@ export class ProfilComponent implements OnInit, OnChanges {
   userId: any;
   userPseudo: any;
   autoprofil: boolean = false;
+  admin: boolean = false;
 
   constructor(private profilService: ProfilService,
               private authentificationService: AuthentificationService, 
@@ -51,16 +51,22 @@ export class ProfilComponent implements OnInit, OnChanges {
   }
 
   profilAAfficher () {
+    // Si on se trouve sur la page profil
     if (this.route.snapshot.routeConfig?.path == 'profil') {
       this.userId = this.authentificationService.idUtilisateurConnecte;
-      this.afficherSonProfil(this.userId);
+      this.admin = this.authentificationService.administrateur;
       this.autoprofil = true;
+      this.afficherSonProfil(this.userId);
     } else {
+      // Sinon, on récupère l'id de l'url
       this.userId = this.route.snapshot.params["id"];
+      // Si l'id est celui de l'utilisateur connecté
       if (this.userId == this.authentificationService.idUtilisateurConnecte) {
+        this.admin = this.authentificationService.administrateur;
         this.autoprofil = true;
         this.afficherSonProfil(this.userId);
       } else {
+        this.admin = this.authentificationService.administrateur;
         this.afficherUnProfil(this.userId);
       }
     }
@@ -82,7 +88,6 @@ export class ProfilComponent implements OnInit, OnChanges {
       .consulterSonProfil(id)
       .subscribe({
         next: (data) => {
-          console.log('consulterSonProfil = ', data[1])
           this.profil = data[0];
           this.dataPosts = data[1];
         },
@@ -92,7 +97,7 @@ export class ProfilComponent implements OnInit, OnChanges {
 
   seDeconnecter() {
     this.authentificationService.deconnection();
-    this.router.navigate(['profil/connection'])
+    this.router.navigate(['profil/identification'])
   }
 
 /********************************************* 
@@ -106,13 +111,38 @@ export class ProfilComponent implements OnInit, OnChanges {
       .consulterUnProfil(id)
       .subscribe({
         next: (data) => {
-          console.log('consulterUnProfil = ', data[1])
           this.profil = data[0];
           this.dataPosts = data[1];
-          console.log('this.dataPosts = ', this.dataPosts)
         },
         error: (e) => console.error(e)
       });
+  }
+
+/********************************************** 
+*********** Modification de profil ************
+**********************************************/
+
+  modifierLeProfil () {
+
+  }
+
+  supprimerLeProfil() {
+    if (this.userId == '61eade7172000ada2562e262') {
+      alert("Profil administrateur principal, ne pas supprimer.");
+    } else {
+      this.profilService.supprimerSonProfil(this.userId)
+      .subscribe({
+        next: (data) => {
+          alert('Profil supprimé!');
+          if (this.autoprofil == true) {
+            this.seDeconnecter();
+          } else {
+            this.router.navigate(['recherche']);
+          }
+        },
+        error: (e) => console.error(e)
+      });
+    }
   }
 
 }

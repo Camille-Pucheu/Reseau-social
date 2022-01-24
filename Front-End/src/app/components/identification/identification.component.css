@@ -1,0 +1,101 @@
+.authContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 160px);
+    padding-top: 50px;
+    position: absolute;
+    right: 0px;
+    top: 110px;
+    width: calc(100% - 190px);
+}
+
+.container {
+    border-radius: 2px 30px;
+    box-shadow: -4px -4px 10px rgba(255, 170, 0, 0.75), 4px 4px 10px rgb(61, 185, 249);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    width: 500px;
+}
+
+ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0em 2em;
+}
+
+a {
+    background-color: rgb(155, 155, 155);
+    border-radius: 2px 15px;
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.349);
+    color: rgb(75, 74, 74);
+    display: flex;
+    font-weight: bold;
+    padding: 10px 45px;
+    text-decoration: none;
+}
+
+a:hover {
+    box-shadow: 2px 2px 7px rgba(134, 134, 134, 0.781);
+    color: rgb(36, 36, 36);
+    cursor: pointer;
+}
+
+a.active {
+    color: black;
+}
+
+#connection:hover {
+    background-color: rgb(196, 130, 0) ;
+}
+#connection.active {
+    background-color: rgb(255, 170, 0) ;
+}
+
+#inscription:hover {
+    background-color: rgb(102, 173, 209) ;
+}
+#inscription.active {
+    background-color: rgb(61, 185, 249) ;
+}
+
+.spacer {
+    min-height: 50px;
+    width: 50px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 950px) {
+    .authContainer {
+        height: calc(100% - 140px);
+        padding-top: 35px;
+        top: 90px;
+        width: calc(100% - 96px);
+    }
+    .container {
+        margin-bottom: 35px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .authContainer {
+        width: 100%;
+    }
+    .container {
+        min-width: 280px;
+        width: auto;
+    }
+    ul {
+        flex-direction: column;
+    }
+    ul li:nth-child(2) {
+        margin: 10px 0;
+    }
+    .spacer {
+        min-height: 100px;
+    }
+}
