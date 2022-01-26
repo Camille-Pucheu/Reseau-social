@@ -36,16 +36,16 @@ app.get('/', cors(corsOptions), function (req,res) {
 })
 
 //Page accueuil
-app.use('/accueil', express.static(path.join(__dirname + '/Front-End/dist/my-app')), accueilRoutes);
+app.use('/accueil', accueilRoutes);
 
 //Page recherche
-app.use('/recherche', express.static(path.join(__dirname + '/Front-End/dist/my-app')), rechercheRoutes);
+app.use('/recherche', rechercheRoutes);
 
 //Page messages
 // app.use('/messagerie', )
 
 //Page profil
-app.use('/profil', express.static(path.join(__dirname + '/Front-End/dist/my-app')), profilRoutes);
+app.use('/profil', profilRoutes);
 
 
 app.listen(PORT, () => {
