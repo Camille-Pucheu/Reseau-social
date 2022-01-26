@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Relier le front Angular
 app.use(express.static(path.join(__dirname + '/Front-End/dist/my-app')))
 
-app.get('/', function (req,res) {
+app.use('/', function (req,res) {
     // res.json({ message: "Test" });
     res.sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
 })
