@@ -4,6 +4,10 @@ const { PostsModel } = require("../models/postsModel");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 
+const path = require('path');
+
+
+
 // Obtenir des utilisateurs
 module.exports.getAllUsers = async (req, res) => {
 

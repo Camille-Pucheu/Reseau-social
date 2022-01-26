@@ -3,6 +3,8 @@ const ObjectID = require('mongoose').Types.ObjectId;
 // Modèle
 const { PostsModel } = require('../models/postsModel');
 
+const path = require('path');
+
 
 // Voir tous les posts
 module.exports.getAllPosts = async (req, res) => {
