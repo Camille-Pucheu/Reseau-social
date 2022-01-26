@@ -36,16 +36,16 @@ app.get('/', cors(corsOptions), function (req,res) {
 })
 
 //Page accueuil
-app.get('/accueil', cors(corsOptions), accueilRoutes);
+app.use('/accueil', cors(corsOptions), accueilRoutes);
 
 //Page recherche
-app.get('/recherche', cors(corsOptions), rechercheRoutes);
+app.use('/recherche', cors(corsOptions), rechercheRoutes);
 
 //Page messages
 // app.use('/messagerie', )
 
 //Page profil
-app.get('/profil', cors(corsOptions), profilRoutes);
+app.use('/profil', cors(corsOptions), profilRoutes);
 
 
 app.listen(PORT, () => {
