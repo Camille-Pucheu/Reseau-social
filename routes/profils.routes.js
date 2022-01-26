@@ -5,7 +5,7 @@ const profilController = require('../controllers/profil.controller');
 const cors = require('cors');
 var corsOptions = {
     // origin: "http://localhost:8081"
-    origin: "https://projet-final-devjs.herokuapp.com"
+    origin: "https://projet-final-devjs.herokuapp.com/profil"
   };
 
 // app.use(cors(corsOptions));
