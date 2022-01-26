@@ -14,10 +14,7 @@ const PORT = process.env.PORT || 5500;
 
 var corsOptions = {
     // origin: "http://localhost:8081"
-    // origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
-    // origin: express.static(path.join(__dirname + '/Front-End/dist/my-app'))
-    origin: "https://projet-final-devjs.herokuapp.com/"
-    
+    origin: "https://projet-final-devjs.herokuapp.com"
   };
 
 app.use(cors(corsOptions));
@@ -33,22 +30,22 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Relier le front Angular
 app.use(express.static(path.join(__dirname + '/Front-End/dist/my-app')))
 
-app.get('/', function (req,res) {
+app.get('/', cors(corsOptions), function (req,res) {
     // res.json({ message: "Test" });
     res.sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
 })
 
 //Page accueuil
-app.use('/accueil', accueilRoutes);
+app.get('/accueil', cors(corsOptions), accueilRoutes);
 
 //Page recherche
-app.use('/recherche', rechercheRoutes);
+app.get('/recherche', cors(corsOptions), rechercheRoutes);
 
 //Page messages
 // app.use('/messagerie', )
 
 //Page profil
-app.use('/profil', profilRoutes);
+app.get('/profil', cors(corsOptions), profilRoutes);
 
 
 app.listen(PORT, () => {
