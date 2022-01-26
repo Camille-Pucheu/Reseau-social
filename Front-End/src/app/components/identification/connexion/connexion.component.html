@@ -1,6 +1,6 @@
-<div class="connectionContainer">
+<div class="connexionContainer">
 
-    <form (ngSubmit)="onSubmit(connectionForm)" #connectionForm="ngForm">
+    <form (ngSubmit)="onSubmit(connexionForm)" #connexionForm="ngForm">
 
         <label for="pseudo">Pseudonyme <abbr title="required">*</abbr></label>
         <input type="text" name="pseudo" id="pseudo" ngModel required>
@@ -8,9 +8,9 @@
         <label for="password">Mot de Passe <abbr title="required">*</abbr></label>
         <input type="password" name="password" ngModel required>
 
-        <p *ngIf="erreurConnection == true">Pseudonyme ou mot de passe incorrect.</p>
+        <p *ngIf="erreurConnexion == true">Pseudonyme ou mot de passe incorrect.</p>
 
-        <input type="submit" value="Connection" [disabled]="connectionForm.invalid">
+        <input type="submit" value="Connexion" [disabled]="connexionForm.invalid">
             
     </form>
 

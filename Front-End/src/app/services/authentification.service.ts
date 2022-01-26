@@ -2,11 +2,11 @@ export class AuthentificationService {
 
     authentification = false;
 
-    idUtilisateurConnecte = 'connection';
+    idUtilisateurConnecte = 'connexion';
     pseudoUtilisateurConnecte: string | undefined = '';
     administrateur = false;
 
-    connection (id: string, pseudo: string|undefined) {
+    connexion (id: string, pseudo: string|undefined) {
         return new Promise(
             (resolve, rejects) => {
                 this.authentification = true;
@@ -20,9 +20,9 @@ export class AuthentificationService {
         )
     }
 
-    deconnection () {
+    deconnexion () {
         this.authentification = false;
-        this.idUtilisateurConnecte = 'connection';
+        this.idUtilisateurConnecte = 'connexion';
         this.pseudoUtilisateurConnecte = '';
         this.administrateur = false;
     }

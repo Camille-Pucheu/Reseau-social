@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 /********* Components *********/
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
-import { ConnectionComponent } from './components/identification/connection/connection.component';
+import { ConnexionComponent } from './components/identification/connexion/connexion.component';
 import { HeaderComponent } from './components/header/header.component';
 import { IdentificationComponent } from './components/identification/identification.component';
 import { InscriptionComponent } from './components/identification/inscription/inscription.component';
@@ -30,7 +30,7 @@ import { ProfilService } from './services/profil.service';
   declarations: [
     AppComponent,
     AccueilComponent,
-    ConnectionComponent,
+    ConnexionComponent,
     HeaderComponent,
     IdentificationComponent,
     InscriptionComponent,

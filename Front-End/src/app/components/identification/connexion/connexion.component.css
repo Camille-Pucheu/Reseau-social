@@ -1,4 +1,4 @@
-.connectionContainer {
+.connexionContainer {
     border-radius: 2px 30px;
     box-shadow: 4px 4px 10px rgb(255, 170, 0);
     display: flex;
@@ -63,7 +63,7 @@ input[disabled]:hover {
 
 /* Responsive Styles */
 @media screen and (max-width: 700px) {
-    .connectionContainer {
+    .connexionContainer {
         min-width: 280px;
         width: auto;
     }

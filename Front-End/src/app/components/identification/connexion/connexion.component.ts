@@ -8,15 +8,15 @@ import { ProfilService } from '../../../services/profil.service';
 import { User } from 'src/app/models/profil.model';
 
 @Component({
-  selector: 'app-connection',
-  templateUrl: './connection.component.html',
-  styleUrls: ['./connection.component.css']
+  selector: 'app-connexion',
+  templateUrl: './connexion.component.html',
+  styleUrls: ['./connexion.component.css']
 })
-export class ConnectionComponent implements OnInit {
+export class ConnexionComponent implements OnInit {
 
   userInfos : User[] = [];
 
-  erreurConnection = false;
+  erreurConnexion = false;
 
   constructor(private authentificationService: AuthentificationService, 
               private router: Router,
@@ -24,18 +24,18 @@ export class ConnectionComponent implements OnInit {
 
               
   ngOnInit(): void {
-    if (this.authentificationService.idUtilisateurConnecte !== 'connection') {
+    if (this.authentificationService.idUtilisateurConnecte !== 'connexion') {
       this.renvoiVersProfil(this.authentificationService.idUtilisateurConnecte, this.authentificationService.pseudoUtilisateurConnecte);
     }
   }
   
 
 /********************************************* 
-***************** Connection *****************
+***************** Connexion *****************
 **********************************************/
   
   onSubmit(form: NgForm) {
-    this.erreurConnection = true;
+    this.erreurConnexion = true;
     this.interrogeLeServeur(form.value);
   }
   
@@ -55,7 +55,7 @@ export class ConnectionComponent implements OnInit {
 
   renvoiVersProfil (id: any, pseudo: string|undefined) {
     const newIdUrl = 'profil/' + id;
-    this.authentificationService.connection(id, pseudo).then( () => {
+    this.authentificationService.connexion(id, pseudo).then( () => {
       this.router.navigate([newIdUrl]);
     } )
   }

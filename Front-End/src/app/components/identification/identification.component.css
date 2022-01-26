@@ -49,10 +49,10 @@ a.active {
     color: black;
 }
 
-#connection:hover {
+#connexion:hover {
     background-color: rgb(196, 130, 0) ;
 }
-#connection.active {
+#connexion.active {
     background-color: rgb(255, 170, 0) ;
 }
 

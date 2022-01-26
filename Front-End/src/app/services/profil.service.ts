@@ -19,7 +19,7 @@ export class ProfilService {
 **********************************************/
 
   authentification(data: any): Observable<any> {
-    return this.http.post(`${baseUrlProfil}/identification/connection`, data);
+    return this.http.post(`${baseUrlProfil}/identification/connexion`, data);
   }
 
   creationDeProfil(data: any): Observable<any> {

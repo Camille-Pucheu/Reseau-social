@@ -5,8 +5,10 @@ const profilController = require('../controllers/profil.controller');
 const cors = require('cors');
 var corsOptions = {
     // origin: "http://localhost:8081"
-    origin: "https://projet-final-devjs.herokuapp.com/profil"
+    origin: "http://localhost:5500/profil"
+    // origin: "https://projet-final-devjs.herokuapp.com/profil"
   };
+  const path = require('path');
 
 // app.use(cors(corsOptions));
 
@@ -15,17 +17,17 @@ var corsOptions = {
 **********************************************/
 
 // Authentification
-router.post('/identification/connection', cors(corsOptions), profilController.signIn);
+router.post('/identification/connexion', profilController.signIn);
 
 // Création d'un utilisateur
-router.post('/identification/inscription', cors(corsOptions), profilController.createUser);
+router.post('/identification/inscription', profilController.createUser);
 
 /********************************************* 
 *********** Consultation de profil ***********
 **********************************************/
 
 // Consulter son profil
-router.get('/:id', cors(corsOptions), profilController.userInfo);
+router.get('/:id', profilController.userInfo);
 
 // router.get('/:id', [profilController.userInfo, postsController.userPosts]);
 
@@ -37,7 +39,7 @@ router.get('/:id', cors(corsOptions), profilController.userInfo);
 // router.put('/:id', profilController.updateUser);
 
 // Supprimer un utilisateur
-router.delete('/:id', cors(corsOptions), profilController.deleteUser);
+router.delete('/:id', profilController.deleteUser);
 
 
 module.exports = router;

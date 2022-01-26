@@ -9,14 +9,14 @@ var corsOptions = {
     origin: "https://projet-final-devjs.herokuapp.com/accueil"
   };
 
-// app.use(cors(corsOptions));
+// router.use(cors(corsOptions));
 
 
 // Voir tous les posts
-router.get('/', cors(corsOptions), postsController.getAllPosts);
+router.get('/', postsController.getAllPosts);
 
 // Créer un post
-router.post('/', cors(corsOptions), postsController.createPost);
+router.post('/', postsController.createPost);
 
 //Update / Mise a jour
 // router.put("/:id", );

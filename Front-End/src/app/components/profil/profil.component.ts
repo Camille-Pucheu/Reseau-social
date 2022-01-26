@@ -96,7 +96,7 @@ export class ProfilComponent implements OnInit, OnChanges {
   }
 
   seDeconnecter() {
-    this.authentificationService.deconnection();
+    this.authentificationService.deconnexion();
     this.router.navigate(['profil/identification'])
   }
 

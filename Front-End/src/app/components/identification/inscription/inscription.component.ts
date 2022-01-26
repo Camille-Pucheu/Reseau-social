@@ -40,7 +40,7 @@ export class InscriptionComponent implements OnInit, OnChanges {
               private profilService: ProfilService) { }
 
   ngOnInit(): void {
-    if (this.authentificationService.idUtilisateurConnecte !== 'connection') {
+    if (this.authentificationService.idUtilisateurConnecte !== 'connexion') {
       this.renvoiVersProfil(this.authentificationService.idUtilisateurConnecte, this.authentificationService.pseudoUtilisateurConnecte);
     }
     this.initForm();
@@ -52,7 +52,7 @@ export class InscriptionComponent implements OnInit, OnChanges {
 
   renvoiVersProfil (id: any, pseudo: string|undefined) {
     const newIdUrl = 'profil/' + id;
-    this.authentificationService.connection(id, pseudo).then( () => {
+    this.authentificationService.connexion(id, pseudo).then( () => {
       this.router.navigate([newIdUrl]);
     } )
   }

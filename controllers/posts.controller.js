@@ -5,7 +5,7 @@ const { PostsModel } = require('../models/postsModel');
 
 
 // Voir tous les posts
-module.exports.getAllPosts = async (req, res) => {
+module.exports.getAllPosts = async (req, res, next) => {
     PostsModel.find( (err, docs) => {
         if (!err) {
             // console.log('docs router : ' + docs);
