@@ -3,15 +3,13 @@ const ObjectID = require('mongoose').Types.ObjectId;
 // Modèle
 const { PostsModel } = require('../models/postsModel');
 
-const path = require('path');
-
 
 // Voir tous les posts
 module.exports.getAllPosts = async (req, res) => {
     PostsModel.find( (err, docs) => {
         if (!err) {
             // console.log('docs router : ' + docs);
-            res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+            res.status(200).send(docs);
         } else {
             console.log('erreur router: ' + err);
         }
@@ -23,7 +21,7 @@ module.exports.userPosts = (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
-        return res.status(400).send(`Utilisateur ${id} non reconnu`).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+        return res.status(400).send(`Utilisateur ${id} non reconnu`);
     }
     else {
         PostsModel.find({userId: id}, function (err, docs) {
@@ -31,7 +29,7 @@ module.exports.userPosts = (req, res) => {
                 res.send('erreur');
             }
             else {
-                res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+                res.status(200).send(docs);
 
             }
         }).sort({ 'date' : -1});
@@ -49,7 +47,7 @@ module.exports.createPost = (req, res) => {
 
     newPost.save((err,docs) => {
         if (!err) {
-            res.send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+            res.send(docs);
         } else {
             console.log('Erreur de newPost : ' + err);
         }

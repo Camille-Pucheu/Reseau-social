@@ -13,10 +13,11 @@ const rechercheRoutes = require('./routes/recherche.routes');
 const PORT = process.env.PORT || 5500;
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    // origin: "http://localhost:8081"
+    origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
   };
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 //Verifier si message d'erreur node
 // const mongoose = require('mongoose');

@@ -4,9 +4,6 @@ const { PostsModel } = require("../models/postsModel");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 
-const path = require('path');
-
-
 
 // Obtenir des utilisateurs
 module.exports.getAllUsers = async (req, res) => {
@@ -19,7 +16,7 @@ module.exports.getAllUsers = async (req, res) => {
                 res.send('err');
             }
             else {
-                res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+                res.status(200).send(docs);
             }
         })
     // Recherche par prenom
@@ -30,7 +27,7 @@ module.exports.getAllUsers = async (req, res) => {
                 res.send('err');
             }
             else {
-                res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+                res.status(200).send(docs);
             }
         })
     // Recherche par nom
@@ -41,13 +38,13 @@ module.exports.getAllUsers = async (req, res) => {
                 res.send('err');
             }
             else {
-                res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+                res.status(200).send(docs);
             }
         })
     // Tous les utilisateurs
     } else {
         const users = await ProfilsModel.find().select("-password");
-        res.status(200).send(users).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+        res.status(200).send(users);
     }
     
 };
@@ -58,7 +55,7 @@ module.exports.userInfo = (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
-        return res.status(400).send(`Utilisateur ${id} non reconnu`).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+        return res.status(400).send(`Utilisateur ${id} non reconnu`);
     }
     else {
         ProfilsModel.findById(id, function (err, profilData) {
@@ -72,7 +69,7 @@ module.exports.userInfo = (req, res) => {
                     }
                     else {
                         const datas = [profilData, postsData]
-                        res.status(200).send(datas).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
+                        res.status(200).send(datas);
                     }
                 }).sort({ 'date' : -1});
             }
