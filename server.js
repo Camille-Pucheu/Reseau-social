@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 5500;
 
 var corsOptions = {
     // origin: "http://localhost:8081"
-    origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
+    // origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
+    origin: express.static(path.join(__dirname + '/Front-End/dist/my-app'))
+    
   };
 
 app.use(cors(corsOptions));
@@ -28,7 +30,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Relier le front Angular
-app.use(express.static(path.join(__dirname + '/Front-End/dist/my-app')))
+// app.use(express.static(path.join(__dirname + '/Front-End/dist/my-app')))
 
 app.get('/', function (req,res) {
     // res.json({ message: "Test" });
