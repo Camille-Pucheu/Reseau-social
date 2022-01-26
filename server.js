@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 5500;
 
 var corsOptions = {
     // origin: "http://localhost:8081"
-    // origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
-    origin: express.static(path.join(__dirname + '/Front-End/dist/my-app'))
+    origin: path.join(__dirname + '/Front-End/dist/my-app/index.html')
+    // origin: express.static(path.join(__dirname + '/Front-End/dist/my-app'))
     
   };
 
