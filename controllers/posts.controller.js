@@ -9,7 +9,7 @@ module.exports.getAllPosts = async (req, res) => {
     PostsModel.find( (err, docs) => {
         if (!err) {
             // console.log('docs router : ' + docs);
-            res.status(200).send(docs)
+            res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
         } else {
             console.log('erreur router: ' + err);
         }
@@ -21,7 +21,7 @@ module.exports.userPosts = (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
-        return res.status(400).send(`Utilisateur ${id} non reconnu`);
+        return res.status(400).send(`Utilisateur ${id} non reconnu`).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
     }
     else {
         PostsModel.find({userId: id}, function (err, docs) {
@@ -29,7 +29,7 @@ module.exports.userPosts = (req, res) => {
                 res.send('erreur');
             }
             else {
-                res.status(200).send(docs);
+                res.status(200).send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
 
             }
         }).sort({ 'date' : -1});
@@ -47,7 +47,7 @@ module.exports.createPost = (req, res) => {
 
     newPost.save((err,docs) => {
         if (!err) {
-            res.send(docs);
+            res.send(docs).sendFile(path.join(__dirname + '/Front-End/dist/my-app/index.html'));
         } else {
             console.log('Erreur de newPost : ' + err);
         }
@@ -58,7 +58,7 @@ module.exports.createPost = (req, res) => {
 module.exports.updatePost = (req, res) => {
     //Verifie si l'ID est inconnu
     if (!ObjetID.isValid(req.params.id)) {
-        return res.status(400).send("ID inconnu : " + req.params.id)
+        return res.status(400).send("ID inconnu : " + req.params.id);
     }
 
     //si l'ID est connu
